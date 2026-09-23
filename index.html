@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MY Secret World ♡</title>
+
+<style>
+
+/* =========================================================
+  MY SECRET WORLD
+   COMPLETE STANDALONE VERSION
+   ========================================================= */
+
+
+/* =========================
+   EASY CUSTOMIZATION
+   =========================
+
+   To change photos, edit the five paths in the JavaScript
+   near the bottom:
+
+   photo1.jpg
+   photo2.jpg
+   photo3.jpg
+   photo4.jpg
+   photo5.jpg
+
+   You can also search this file for:
+   "EDIT THIS"
+*/
+
+
+:root {
+    --pink: #e9a8c8;
+    --pink-light: #f4c7dd;
+    --pink-dark: #b85f8d;
+
+    --background: #09070a;
+    --background-2: #120b10;
+    --card: #1a1017;
+
+    --text: #f9f4f7;
+    --muted: #bcaeb6;
+
+    --border: #3a2531;
+
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================
+   BASIC RESET
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: var(--sans);
+}
+
+button {
+    font-family: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* =========================
+   COVER
+   ========================= */
+
+.secret-cover {
+    min-height: 100vh;
+    min-height: 100svh;
+
+    display: grid;
+    place-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #5d193e 0%,
+            #210e1c 28%,
+            #09070a 68%
+        );
+}
+
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    opacity: .65;
+
+    background-image:
+        radial-gradient(#ffffff 1px, transparent 1px);
+
+    background-size: 90px 90px;
+
+    animation: starsMove 15s linear infinite;
+}
+
+
+@keyframes starsMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(90px);
+    }
+
+}
+
+
+.cover-orbit {
+    position: absolute;
+
+    width: 70vw;
+    height: 70vw;
+
+    max-width: 700px;
+    max-height: 700px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 100px rgba(212,75,152,.33) inset;
+
+    animation: orbitPulse 5s ease-in-out infinite;
+}
+
+
+@keyframes orbitPulse {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+
+}
+
+
+.cover-content {
+    position: relative;
+    z-index: 2;
+
+    padding: 32px;
+
+    max-width: 700px;
+
+    animation: coverAppear 1.4s ease;
+}
+
+
+@keyframes coverAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+.tiny-label,
+.eyebrow {
+
+    font-size: 10px;
+
+    letter-spacing: .25em;
+
+    text-transform: uppercase;
+
+    color: var(--pink);
+}
+
+
+.lock {
+
+    font-size: 36px;
+
+    color: var(--pink);
+
+    margin: 26px 0 10px;
+
+}
+
+
+.cover-content h1 {
+
+    font-family: var(--serif);
+
+    font-size: clamp(58px, 11vw, 115px);
+
+    line-height: .82;
+
+    letter-spacing: -.055em;
+
+    margin: 0;
+}
+
+
+.cover-content h1 i {
+
+    font-weight: normal;
+
+}
+
+
+.cover-content p {
+
+    font-size: 16px;
+
+    color: #cbbbc5;
+
+    margin: 28px auto;
+
+    max-width: 440px;
+
+    line-height: 1.6;
+
+}
+
+
+.enter-button,
+.hero-copy button,
+.outline,
+.mini {
+
+    border: 1px solid var(--pink);
+
+    background: rgba(255,255,255,.05);
+
+    color: white;
+
+    border-radius: 999px;
+
+    padding: 14px 22px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+
+.enter-button:hover,
+.hero-copy button:hover,
+.outline:hover,
+.mini:hover {
+
+    background: var(--pink);
+
+    color: #180c14;
+
+    transform: translateY(-2px);
+}
+
+
+.enter-button span {
+
+    margin-left: 20px;
+
+}
+
+
+.cover-note {
+
+    margin-top: 28px;
+
+    color: #8c7381;
+
+    font-size: 11px;
+
+}
+
+
+/* =========================
+   MAIN WEBSITE
+   ========================= */
+
+.world {
+
+    background: var(--background);
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   NAVIGATION
+   ========================= */
+
+.nav {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 50;
+
+    padding: 18px 24px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 10px;
+
+    letter-spacing: .2em;
+
+    color: #e6d5de;
+
+    background:
+        linear-gradient(
+            #0b080cdd,
+            transparent
+        );
+}
+
+
+.nav-heart {
+
+    font-size: 22px;
+
+}
+
+
+/* =========================
+   HERO
+   ========================= */
+
+.hero-photo {
+
+    height: 100vh;
+
+    min-height: 650px;
+
+    position: relative;
+
+}
+
+
+.hero-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center 25%;
+
+    filter: saturate(.85);
+
+}
+
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(9,7,10,.8) 0%,
+            rgba(9,7,10,.32) 50%,
+            rgba(9,7,10,.05) 100%
+        ),
+
+        linear-gradient(
+            0deg,
+            #09070a 0%,
+            transparent 35%
+        );
+
+}
+
+
+.hero-copy {
+
+    position: absolute;
+
+    left: 8%;
+
+    bottom: 10%;
+
+    max-width: 650px;
+
+}
+
+
+.hero-copy h1 {
+
+    font-family: var(--serif);
+
+    font-size: clamp(52px, 8vw, 105px);
+
+    line-height: .88;
+
+    letter-spacing: -.05em;
+
+    margin: 18px 0;
+
+}
+
+
+.hero-copy h1 i {
+
+    font-weight: normal;
+
+}
+
+
+.hero-copy p {
+
+    font-size: 22px;
+
+    color: var(--pink-light);
+
+}
+
+
+.hero-copy button {
+
+    margin-top: 20px;
+
+}
+
+
+/* =========================
+   SECTIONS
+   ========================= */
+
+.section {
+
+    padding: 120px max(7vw, 24px);
+
+}
+
+
+.intro {
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+
+}
+
+
+.intro h2,
+.chapter h2,
+.date-copy h2,
+.choice h2,
+.final h2 {
+
+    font-family: var(--serif);
+
+    font-size: clamp(48px, 7vw, 88px);
+
+    line-height: .92;
+
+    letter-spacing: -.045em;
+
+    margin: 20px 0 30px;
+
+}
+
+
+.intro h2 i,
+.chapter h2 i,
+.date-copy h2 i,
+.final h2 i {
+
+    font-weight: normal;
+
+}
+
+
+.big-copy {
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: var(--muted);
+
+    max-width: 650px;
+
+    margin: auto;
+
+}
+
+
+/* =========================
+   PHOTO CHAPTER
+   ========================= */
+
+.chapter {
+
+    max-width: 1250px;
+
+    margin: auto;
+
+}
+
+
+.chapter-head {
+
+    display: flex;
+
+    gap: 28px;
+
+    align-items: flex-start;
+
+}
+
+
+.chapter-head > span {
+
+    font-size: 11px;
+
+    color: #df93b8;
+
+    border-top: 1px solid #df93b8;
+
+    padding-top: 8px;
+
+}
+
+
+.photo-grid {
+
+    margin-top: 60px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        .8fr
+        .8fr;
+
+    grid-template-rows:
+        380px
+        300px;
+
+    gap: 14px;
+
+}
+
+
+.photo-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #171016;
+
+}
+
+
+.photo-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .6s ease;
+
+}
+
+
+.photo-card:hover img {
+
+    transform: scale(1.05);
+
+}
+
+
+.photo-card span {
+
+    position: absolute;
+
+    bottom: 15px;
+
+    left: 15px;
+
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    background: rgba(9,7,10,.8);
+
+    padding: 7px 9px;
+
+}
+
+
+.p0 {
+
+    grid-row: span 2;
+
+}
+
+
+.p3 {
+
+    grid-column: 2;
+
+}
+
+
+.p4 {
+
+    grid-column: 3;
+
+}
+
+
+/* =========================
+   DARK SURPRISE SECTION
+   ========================= */
+
+.dark {
+
+    background: var(--background-2);
+
+    max-width: none;
+
+}
+
+
+.dark > * {
+
+    max-width: 1100px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+}
+
+
+.mystery-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-top: 50px;
+
+}
+
+
+.mystery-grid button {
+
+    min-height: 240px;
+
+    text-align: left;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    color: white;
+
+    padding: 24px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    transition: .3s;
+
+}
+
+
+.mystery-grid button:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #d990b4;
+
+    background: #21131d;
+
+}
+
+
+.mystery-grid b {
+
+    font-size: 42px;
+
+    margin-bottom: auto;
+
+}
+
+
+.mystery-grid strong {
+
+    font-family: var(--serif);
+
+    font-size: 28px;
+
+}
+
+
+.mystery-grid small {
+
+    color: #9f8b96;
+
+    margin-top: 8px;
+
+}
+
+
+.mystery-grid span {
+
+    font-size: 10px;
+
+    letter-spacing: .2em;
+
+    color: #d990b4;
+
+}
+
+
+/* =========================
+   SURPRISE REVEAL
+   ========================= */
+
+.reveal {
+
+    max-width: 700px !important;
+
+    margin-top: 25px;
+
+    padding: 38px;
+
+    background: #21131d;
+
+    border: 1px solid #5d3048;
+
+    text-align: center;
+
+    animation: reveal .5s ease;
+
+}
+
+
+@keyframes reveal {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+.reveal-icon,
+.hug-animation {
+
+    font-size: 42px;
+
+}
+
+
+.reveal h3 {
+
+    font-family: var(--serif);
+
+    font-size: 36px;
+
+    margin: 15px;
+
+}
+
+
+.reveal p {
+
+    color: #cdbcc6;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================
+   DATE SECTION
+   ========================= */
+
+.date-section {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 7vw;
+
+    align-items: center;
+
+    max-width: 1250px;
+
+    margin: auto;
+
+}
+
+
+.date-image {
+
+    height: 680px;
+
+}
+
+
+.date-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+.date-copy p {
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    max-width: 500px;
+
+}
+
+
+.memory {
+
+    margin-top: 30px;
+
+    border-left: 1px solid #d990b4;
+
+    padding-left: 20px;
+
+    color: #efd3e0;
+
+    line-height: 1.7;
+
+    animation: reveal .4s ease;
+
+}
+
+
+/* =========================
+   CHOICE SECTION
+   ========================= */
+
+.choice {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    text-align: center;
+
+}
+
+
+.choice > p {
+
+    color: var(--muted);
+
+}
+
+
+.choice-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+
+    margin-top: 50px;
+
+}
+
+
+.choice-grid button {
+
+    min-height: 230px;
+
+    text-align: left;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    color: white;
+
+    padding: 24px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    transition: .3s;
+
+}
+
+
+.choice-grid button:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #d990b4;
+
+    background: #21131d;
+
+}
+
+
+.choice-grid b {
+
+    font-size: 42px;
+
+    margin-bottom: auto;
+
+}
+
+
+.choice-grid strong {
+
+    font-family: var(--serif);
+
+    font-size: 25px;
+
+}
+
+
+.choice-grid small {
+
+    color: #9f8b96;
+
+    margin-top: 8px;
+
+}
+
+
+.scene-reveal {
+
+    margin: 30px auto 0;
+
+    max-width: 650px;
+
+    padding: 30px;
+
+    border: 1px solid var(--border);
+
+    background: var(--background-2);
+
+    animation: reveal .5s ease;
+
+}
+
+
+.scene-reveal span {
+
+    font-size: 42px;
+
+}
+
+
+.scene-reveal p {
+
+    color: #d4c2cc;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================
+   FINAL SECTION
+   ========================= */
+
+.final {
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 7vw;
+
+    align-items: center;
+
+}
+
+
+.final-photo {
+
+    height: 720px;
+
+}
+
+
+.final-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+.final-copy {
+
+    max-width: 520px;
+
+}
+
+
+.final-copy p {
+
+    color: var(--muted);
+
+    line-height: 1.8;
+
+}
+
+
+.final-copy .strong {
+
+    font-size: 20px;
+
+    color: #f1d7e3;
+
+}
+
+
+.signature {
+
+    margin-top: 50px;
+
+    color: #e7a7c8;
+
+    font-family: var(--serif);
+
+    font-size: 24px;
+
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+
+    text-align: center;
+
+    padding: 40px 20px 70px;
+
+    color: #725d68;
+
+    font-size: 10px;
+
+    letter-spacing: .2em;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 800px) {
+
+    .section {
+
+        padding: 80px 20px;
+
+    }
+
+
+    .hero-copy {
+
+        left: 22px;
+
+        right: 22px;
+
+        bottom: 7%;
+
+    }
+
+
+    .hero-copy h1 {
+
+        font-size: 54px;
+
+    }
+
+
+    .photo-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+        grid-template-rows:
+            360px
+            260px
+            260px;
+
+    }
+
+
+    .p0 {
+
+        grid-row: span 2;
+
+    }
+
+
+    .p3 {
+
+        grid-column: 1;
+
+    }
+
+
+    .p4 {
+
+        grid-column: 2;
+
+    }
+
+
+    .mystery-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .choice-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .date-section,
+    .final {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .date-image,
+    .final-photo {
+
+        height: 560px;
+
+    }
+
+
+    .cover-content h1 {
+
+        font-size: 64px;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .choice-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .photo-grid {
+
+        grid-template-columns: 1fr;
+
+        grid-template-rows:
+            430px
+            300px
+            300px
+            300px
+            300px;
+
+    }
+
+
+    .p0,
+    .p3,
+    .p4 {
+
+        grid-column: auto;
+
+        grid-row: auto;
+
+    }
+
+
+    .date-image,
+    .final-photo {
+
+        height: 500px;
+
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div id="app"></div>
+
+
+<script>
+
+/* =========================================================
+   EDIT YOUR WEBSITE HERE
+   ========================================================= */
+
+
+/* -------------------------
+   YOUR PHOTOS
+   -------------------------
+
+   Put your pictures inside:
+
+   photos/photo1.jpg
+   photos/photo2.jpg
+   photos/photo3.jpg
+   photos/photo4.jpg
+   photos/photo5.jpg
+
+   If your files are PNG, simply change .jpg to .png.
+*/
+
+const photos = [
+
+    "photos/photo1.jpg",
+
+    "photos/photo2.jpg",
+
+    "photos/photo3.jpg",
+
+    "photos/photo4.jpg",
+
+    "photos/photo5.jpg"
+
+];
+
+
+/* -------------------------
+   BASIC DETAILS
+   ------------------------- */
+
+const girlName = "Simmi";
+
+const relationshipDate = "7 June 2026";
+
+const signature = "— your favourite idiot ♡";
+
+
+/* =========================================================
+   DON'T NEED TO EDIT BELOW THIS LINE
+   ========================================================= */
+
+
+let entered = false;
+
+let selectedBox = null;
+
+let dateOpen = false;
+
+
+/* =========================
+   COVER SCREEN
+   ========================= */
+
+function showCover() {
+
+    return `
+
+    <div class="secret-cover">
+
+        <div class="stars"></div>
+
+        <div class="cover-orbit"></div>
+
+
+        <div class="cover-content">
+
+            <div class="tiny-label">
+
+              FOR ONE GIRL ONLY
+
+            </div>
+
+
+            <div class="lock">
+
+                ♡
+
+            </div>
+
+
+            <h1>
+
+                ${girlName}'s<br>
+
+                <i>Secret World</i>
+
+            </h1>
+
+
+            <p>
+
+                made quietly, just to put a smile back on your face
+
+            </p>
+
+
+            <button
+                class="enter-button"
+                onclick="enterWorld()"
+            >
+
+                enter my little world
+
+                <span>→</span>
+
+            </button>
+
+
+            <div class="cover-note">
+
+                please donot skip anything ♡
+
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =========================
+   SURPRISES
+   ========================= */
+
+function getSurprise() {
+
+
+    if (selectedBox === "letter") {
+
+        return `
+
+        <div class="reveal">
+
+            <div class="reveal-icon">
+
+                ♡
+
+            </div>
+
+
+            <h3>
+
+                for you, ${girlName.toLowerCase()}
+
+            </h3>
+
+
+            <p>
+
+                I don't care whether today was perfect.
+
+                I care that you are here with me .
+
+                I care about the little things you do the things you like and enjoy 
+
+                the random conversations, the stupid arguments,
+
+                the laughs and all the moments in between.
+
+                terko kuch alg banne ki ya kuch alg try krne ki jrurt nhi hai tu jaisi hai ekdum perfect hai.
+
+            </p>
+
+        </div>
+
+        `;
+
+    }
+
+
+    if (selectedBox === "chaos") {
+
+        return `
+
+        <div class="reveal">
+
+            <div class="reveal-icon">
+
+                😂
+
+            </div>
+
+
+            <h3>
+
+                official announcement
+
+            </h3>
+
+
+            <p>
+
+                Tu na mujrim hai kyoki itni pyari itni cute lgti hai tu You have been found guilty of being unnecessarily cute,
+
+                pta nhi kaisey mgr tu khdus lovely just being good at making
+
+                one particular idiot think about you all day.
+
+            </p>
+
+
+            <button
+                class="mini"
+                onclick="closeSurprise()"
+            >
+
+                okay fine 😭
+
+            </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    if (selectedBox === "hug") {
+
+        return `
+
+        <div class="reveal">
+
+            <div class="hug-animation">
+
+                🫂
+
+            </div>
+
+
+            <h3>
+
+                come here.
+
+            </h3>
+
+
+            <p>
+
+                dekh mai kuch explain ya kuch sfai nhi dena chahta bs itna khunga 
+                bs ek tight hug tu meri baho mai ho bss or sbh bhul jaa
+            </p>
+
+        </div>
+
+        `;
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =========================
+   SCENE CHOICES
+   ========================= */
+
+function getScene() {
+
+
+    const scenes = {
+
+
+        "night drive": {
+
+            icon: "🌃",
+
+            text:
+
+                "um bs ek mst night long drive apa dono sath mai ek dusre ka hath mai hath jab tak tu khush nhi ho jati."
+
+        },
+
+
+        "ice cream": {
+
+            icon: "🍦",
+
+            text:
+
+                "um tu merey liye ek ice cream choose kr koi bhi flavr ki fir apa dono usme se hi khaynge ek sth."
+
+        },
+
+
+        "rain": {
+
+            icon: "🌧️",
+
+            text:
+
+                "mst barish ho rhi ho apa dono sath mai bs ek pyara sa tight hug or tu merey sth ho na koi photo na koi plan bs ek mst sa moment terey sath chill krte hue listening to the rain."
+
+        },
+
+
+        "rooftop": {
+
+            icon: "🌆",
+
+            text:
+
+                "haa terrace pe jake apa dono latke khula aasman tarey gin rhey ho or apni batey ek dusre se share krte hue."
+
+        }
+
+    };
+
+
+    if (!scenes[selectedBox]) {
+
+        return "";
+
+    }
+
+
+    return `
+
+        <div class="scene-reveal">
+
+            <span>
+
+                ${scenes[selectedBox].icon}
+
+            </span>
+
+
+            <p>
+
+                ${scenes[selectedBox].text}
+
+            </p>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================
+   MAIN WORLD
+   ========================= */
+
+function showWorld() {
+
+    return `
+
+    <main class="world">
+
+
+        <!-- NAV -->
+
+        <nav class="nav">
+
+            <span>
+
+                ${girlName.toUpperCase()}'S SECRET WORLD
+
+            </span>
+
+
+            <span class="nav-heart">
+
+                ♡
+
+            </span>
+
+        </nav>
+
+
+
+        <!-- HERO -->
+
+        <section class="hero-photo">
+
+
+            <img
+                src="${photos[0]}"
+                alt="${girlName}"
+            >
+
+
+            <div class="hero-overlay"></div>
+
+
+            <div class="hero-copy">
+
+
+                <div class="eyebrow">
+
+                    bs us ldki ke liye joh mera har din kuch different bna deti hai 
+
+                </div>
+
+
+                <h1>
+
+                    aaj ye sbh <br>
+
+                    <i>koi problem ya nrajgi ke liye nhi h</i>
+
+                </h1>
+
+
+                <p>
+
+                   ye sirf terey liye hai
+
+                </p>
+
+
+                <button
+                    onclick="document.getElementById('chapters').scrollIntoView({behavior:'smooth'})"
+                >
+
+                    nichey scroll krti rh ↓
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- INTRO -->
+
+        <section class="intro section">
+
+
+            <div class="eyebrow">
+
+                chapter 01 · ek chotu sa  reminder
+
+            </div>
+
+
+            <h2>
+
+                You don't have to<br>
+
+                <i>earn</i> a reason to smile.
+
+            </h2>
+
+
+            <p class="big-copy">
+
+               um ha pta hai aaj ka din jaisa tu chahti thi vaisa nhi gya .
+
+                lekin tujhe sad na ho bolne ki bjaye 
+
+               mai terey liye kuch krna chha jis se tu voh sbh bhul jaye 
+
+                bshk se kuch pal ke liye bhi.
+
+            </p>
+
+
+        </section>
+
+
+
+        <!-- PHOTOS -->
+
+        <section
+            id="chapters"
+            class="chapter section"
+        >
+
+
+            <div class="chapter-head">
+
+                <span>
+
+                    02
+
+                </span>
+
+
+                <div>
+
+                    <div class="eyebrow">
+
+                        the girl I see
+
+                    </div>
+
+
+                    <h2>
+
+                        five little frames.<br>
+
+                        <i>one favourite person.</i>
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="photo-grid">
+
+
+                ${photos.map(
+
+                    (photo, index) => `
+
+                    <div class="photo-card p${index}">
+
+                        <img
+                            src="${photo}"
+                            alt="${girlName} memory ${index + 1}"
+                        >
+
+                        <span>
+
+                            frame ${String(index + 1).padStart(2, "0")}
+
+                        </span>
+
+                    </div>
+
+                    `
+
+                ).join("")}
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- SURPRISE -->
+
+        <section class="chapter dark section">
+
+
+            <div class="eyebrow">
+
+                03 · pick your surprise
+
+            </div>
+
+
+            <h2>
+
+                Donot think.<br>
+
+                <i>just choose one or ek khas baat sarey bhi kr skti hai try tu</i>
+
+            </h2>
+
+
+            <div class="mystery-grid">
+
+
+                <button onclick="chooseSurprise('letter')">
+
+                    <span>01</span>
+
+                    <b>💌</b>
+
+                    <strong>
+
+                        the letter
+
+                    </strong>
+
+                    <small>
+
+                        something I actually mean
+
+                    </small>
+
+                </button>
+
+
+
+                <button onclick="chooseSurprise('chaos')">
+
+                    <span>02</span>
+
+                    <b>😂</b>
+
+                    <strong>
+
+                        the chaos = klesh madam ji
+
+                    </strong>
+
+                    <small>
+
+                        kyoki tera hasna jruri h 
+
+                    </small>
+
+                </button>
+
+
+
+                <button onclick="chooseSurprise('hug')">
+
+                    <span>03</span>
+
+                    <b>🫂</b>
+
+                    <strong>
+
+                        the hug
+
+                    </strong>
+
+                    <small>
+
+                        no explanation needed
+
+                    </small>
+
+                </button>
+
+
+            </div>
+
+
+            ${getSurprise()}
+
+
+        </section>
+
+
+
+        <!-- TIMELINE -->
+
+        <section class="date-section section">
+
+
+            <div class="date-image">
+
+
+                <img
+                    src="${photos[2]}"
+                    alt="${girlName}"
+                >
+
+
+            </div>
+
+
+            <div class="date-copy">
+
+
+                <div class="eyebrow">
+
+                    04 · our little timeline
+
+                </div>
+
+
+                <h2>
+
+                    7 June<br>
+
+                    <i>2026</i>
+
+                </h2>
+
+
+                <p>
+
+                    ek khas din meri life ka joh ek sirf ek date nhi hai meri life ka best day mai se ek hai the best decision i made in my life 
+                </p>
+
+
+                <button
+                    class="outline"
+                    onclick="toggleMemory()"
+                >
+
+                    ${dateOpen ? "close memory" : "open memory"}
+
+                    ↗
+
+                </button>
+
+
+                ${dateOpen ? `
+
+                    <div class="memory">
+
+                        um kuch shurvat ekdum perfect ho ye jruri nhi hota 
+                        
+                        unhe kimti bnane ke liye toh bs
+
+                        voh khas insaan saath ho vhi kafi h
+
+                    </div>
+
+                ` : ""}
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ONE HOUR -->
+
+        <section class="choice section">
+
+
+            <div class="eyebrow">
+
+                05 · agr tu apni life ka 1hr mujhe de toh 
+
+            </div>
+
+
+            <h2>
+
+                kha jana psnd kregi merey sth?
+
+            </h2>
+
+
+            <p>
+
+                Pick one. teri choice ka 
+
+            </p>
+
+
+
+            <div class="choice-grid">
+
+
+                <button
+                    onclick="chooseScene('night drive')"
+                >
+
+                    <b>🌃</b>
+
+                    <strong>
+
+                        night drive
+
+                    </strong>
+
+                    <small>
+
+                        windows down, random songs, no destination
+
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    onclick="chooseScene('ice cream')"
+                >
+
+                    <b>🍦</b>
+
+                    <strong>
+
+                        ice cream
+
+                    </strong>
+
+                    <small>
+
+                        one spoon, two idiots, arguing over flavours
+
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    onclick="chooseScene('rain')"
+                >
+
+                    <b>🌧️</b>
+
+                    <strong>
+
+                        rain
+
+                    </strong>
+
+                    <small>
+
+                        somewhere quiet, just sitting and talking
+
+                    </small>
+
+                </button>
+
+
+
+                <button
+                    onclick="chooseScene('rooftop')"
+                >
+
+                    <b>🌆</b>
+
+                    <strong>
+
+                        rooftop
+
+                    </strong>
+
+                    <small>
+
+                        city lights and a conversation that lasts too long
+
+                    </small>
+
+                </button>
+
+
+            </div>
+
+
+            ${getScene()}
+
+
+        </section>
+
+
+
+        <!-- FINAL -->
+
+        <section class="final section">
+
+
+            <div class="final-photo">
+
+
+                <img
+                    src="${photos[4]}"
+                    alt="${girlName}"
+                >
+
+
+            </div>
+
+
+
+            <div class="final-copy">
+
+
+                <div class="eyebrow">
+
+                    final chapter
+
+                </div>
+
+
+                <h2>
+
+                    okay…<br>
+
+                    <i>one last thing.</i>
+
+                </h2>
+
+
+                <p>
+
+                   Dekh ab mai koi mntr ya jadu tona krke tera din jis vjh se sad hua voh toh mita nhi skta                  </p>
+
+
+                <p>
+
+                    toh mainey bss ye krne ka socha taki tu khush ho skey 
+                </p>
+
+
+                <p class="strong">
+
+                    ek chota sa world kuch mins ghnte din saal 
+                    kuch mayne nhi rkhta bs mayne rkhta hai toh tera ye hsta hua chhra                 </p>
+
+
+                <div class="signature">
+
+                    ${signature}
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            made for ${girlName.toLowerCase()}
+
+            isko smbhal ke rkhiyo ♡
+
+        </footer>
+
+
+    </main>
+
+    `;
+
+}
+
+
+/* =========================
+   FUNCTIONS
+   ========================= */
+
+function render() {
+
+    const app = document.getElementById("app");
+
+    if (entered) {
+
+        app.innerHTML = showWorld();
+
+    } else {
+
+        app.innerHTML = showCover();
+
+    }
+
+}
+
+
+function enterWorld() {
+
+    entered = true;
+
+    render();
+
+}
+
+
+function chooseSurprise(type) {
+
+    selectedBox = type;
+
+    render();
+
+}
+
+
+function closeSurprise() {
+
+    selectedBox = null;
+
+    render();
+
+}
+
+
+function toggleMemory() {
+
+    dateOpen = !dateOpen;
+
+    render();
+
+}
+
+
+function chooseScene(scene) {
+
+    selectedBox = scene;
+
+    render();
+
+}
+
+
+/* =========================
+   START
+   ========================= */
+
+render();
+
+
+</script>
+
+</body>
+</html>
