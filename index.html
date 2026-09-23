@@ -9,28 +9,9 @@
 <style>
 
 /* =========================================================
-  MY SECRET WORLD
+   MY SECRET WORLD
    COMPLETE STANDALONE VERSION
    ========================================================= */
-
-
-/* =========================
-   EASY CUSTOMIZATION
-   =========================
-
-   To change photos, edit the five paths in the JavaScript
-   near the bottom:
-
-   photo1.png
-   photo2.png
-   photo3.png
-   photo4.png
-   photo5.png
-
-   You can also search this file for:
-   "EDIT THIS"
-*/
-
 
 :root {
     --pink: #e9a8c8;
@@ -934,6 +915,7 @@ img {
 
     color: var(--muted);
 
+
 }
 
 
@@ -1314,32 +1296,35 @@ footer {
    ========================================================= */
 
 
-/* -------------------------
+/* =========================================================
    YOUR PHOTOS
-   -------------------------
+   =========================================================
 
-   Put your pictures inside:
+   IMPORTANT:
 
-   photos/photo1.jpg
-   photos/photo2.jpg
-   photos/photo3.jpg
-   photos/photo4.jpg
-   photos/photo5.jpg
+   Keep these files in the SAME folder as index.html:
 
-   If your files are PNG, simply change .jpg to .png.
-*/
+       index.html
+       photo1.png
+       photo2.png
+       photo3.png
+       photo4.png
+       photo5.png
+
+   Do NOT put "photos/" before the filenames.
+   ========================================================= */
 
 const photos = [
 
-    "photos/photo1.jpg",
+    "./photo1.png",
 
-    "photos/photo2.jpg",
+    "./photo2.png",
 
-    "photos/photo3.jpg",
+    "./photo3.png",
 
-    "photos/photo4.jpg",
+    "./photo4.png",
 
-    "photos/photo5.jpg"
+    "./photo5.png"
 
 ];
 
@@ -1358,7 +1343,6 @@ const signature = "— your favourite idiot ♡";
 /* =========================================================
    DON'T NEED TO EDIT BELOW THIS LINE
    ========================================================= */
-
 
 let entered = false;
 
@@ -1562,6 +1546,7 @@ function getSurprise() {
 
                 dekh mai kuch explain ya kuch sfai nhi dena chahta bs itna khunga 
                 bs ek tight hug tu meri baho mai ho bss or sbh bhul jaa
+
             </p>
 
         </div>
@@ -1702,7 +1687,7 @@ function showWorld() {
 
             <img
                 src="${photos[0]}"
-                alt="${girlName}"
+                alt="photo1"
             >
 
 
@@ -1757,7 +1742,7 @@ function showWorld() {
 
             <div class="eyebrow">
 
-                chapter 01 · ek chotu sa  reminder
+                chapter 01 · ek chotu sa reminder
 
             </div>
 
@@ -1839,7 +1824,7 @@ function showWorld() {
 
                         <img
                             src="${photo}"
-                            alt="${girlName} memory ${index + 1}"
+                            alt="photo${index + 1}"
                         >
 
                         <span>
@@ -1971,7 +1956,7 @@ function showWorld() {
 
                 <img
                     src="${photos[2]}"
-                    alt="${girlName}"
+                    alt="photo3"
                 >
 
 
@@ -2000,6 +1985,7 @@ function showWorld() {
                 <p>
 
                     ek khas din meri life ka joh ek sirf ek date nhi hai meri life ka best day mai se ek hai the best decision i made in my life 
+
                 </p>
 
 
@@ -2174,7 +2160,7 @@ function showWorld() {
 
                 <img
                     src="${photos[4]}"
-                    alt="${girlName}"
+                    alt="photo5"
                 >
 
 
@@ -2203,19 +2189,24 @@ function showWorld() {
 
                 <p>
 
-                   Dekh ab mai koi mntr ya jadu tona krke tera din jis vjh se sad hua voh toh mita nhi skta                  </p>
+                   Dekh ab mai koi mntr ya jadu tona krke tera din jis vjh se sad hua voh toh mita nhi skta
+
+                </p>
 
 
                 <p>
 
                     toh mainey bss ye krne ka socha taki tu khush ho skey 
+
                 </p>
 
 
                 <p class="strong">
 
                     ek chota sa world kuch mins ghnte din saal 
-                    kuch mayne nhi rkhta bs mayne rkhta hai toh tera ye hsta hua chhra                 </p>
+                    kuch mayne nhi rkhta bs mayne rkhta hai toh tera ye hsta hua chhra
+
+                </p>
 
 
                 <div class="signature">
